@@ -4,6 +4,7 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faSave, faTimes } from '@fortawesome/free-solid-svg-icons'
+import config from '../config/config'
 import './UserProfile.css'
 
 const UserProfile = () => {
@@ -25,7 +26,7 @@ const UserProfile = () => {
         return
       }
 
-      const response = await fetch('http://localhost:5000/api/auth/profile', {
+      const response = await fetch(`${config.API_BASE_URL}/api/auth/profile`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
 
@@ -95,7 +96,7 @@ const UserProfile = () => {
       const token = localStorage.getItem('token')
       if (token) {
         try {
-          await fetch('http://localhost:5000/api/auth/profile', {
+          await fetch(`${config.API_BASE_URL}/api/auth/profile`, {
             method: 'PUT',
             headers: {
               'Authorization': `Bearer ${token}`,

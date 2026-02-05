@@ -1,6 +1,7 @@
 import { Card, CardContent, Typography, Box, Button, CircularProgress } from '@mui/material'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import config from '../config/config'
 import './UserQR.css'
 
 function UserQR() {
@@ -22,7 +23,7 @@ function UserQR() {
   const fetchQRData = async () => {
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch('http://localhost:5000/api/auth/qr-code', {
+      const response = await fetch(`${config.API_BASE_URL}/api/auth/qr-code`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

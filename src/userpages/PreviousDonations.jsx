@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDroplet, faCalendarAlt, faMapMarkerAlt, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import config from '../config/config';
 
 const PreviousDonations = () => {
   const [donations, setDonations] = useState([]);
@@ -20,7 +21,7 @@ const PreviousDonations = () => {
       const userObj = JSON.parse(userData);
       setUser(userObj);
       
-      const response = await fetch('http://localhost:5000/api/donations/history', {
+      const response = await fetch(`${config.API_BASE_URL}/api/donations/history`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: userObj.email })
