@@ -51,6 +51,9 @@ const FindDonors = () => {
       }
     } catch (error) {
       console.error('Error searching donors:', error);
+      if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
+        alert('Unable to connect to server. Please check your internet connection.');
+      }
       setDonors([]);
     } finally {
       setLoading(false);

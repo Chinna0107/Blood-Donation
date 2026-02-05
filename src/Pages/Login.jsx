@@ -58,7 +58,11 @@ function Login() {
       }
     } catch (error) {
       console.error('Error:', error);
-      setMessage('Network error. Please try again.');
+      if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
+        setMessage('Unable to connect to server. Please check your internet connection or try again later.');
+      } else {
+        setMessage('Network error. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
