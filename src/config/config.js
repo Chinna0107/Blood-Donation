@@ -1,8 +1,9 @@
+const isProduction = window.location.hostname !== 'localhost';
+
 const config = {
-  API_BASE_URL: import.meta.env.VITE_API_BASE_URL || 
-    (import.meta.env.MODE === 'production' 
-      ? 'https://blood-donation-backend-eight.vercel.app' 
-      : 'http://localhost:5000')
+  API_BASE_URL: isProduction 
+    ? 'https://blood-donation-backend-2kmfdon96-chinna0107s-projects.vercel.app/api'
+    : 'http://localhost:5000/api'
 };
 
 export default config;

@@ -29,7 +29,7 @@ const FindDonors = () => {
         return;
       }
 
-      const response = await fetch(`${config.BASE_URL}/api/donors/search`, {
+      const response = await fetch(`${config.API_BASE_URL}/donors/search`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
