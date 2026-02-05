@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faDroplet, faPhone, faMapMarkerAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import config from '../config/config';
 
 const FindDonors = () => {
   const [donors, setDonors] = useState([]);
@@ -28,7 +29,7 @@ const FindDonors = () => {
         return;
       }
 
-      const response = await fetch('http://localhost:5000/api/donors/search', {
+      const response = await fetch(`${config.BASE_URL}/api/donors/search`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
