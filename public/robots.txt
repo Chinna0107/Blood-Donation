@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Disallow: /dashboard
-Disallow: /user/
+Disallow: /private/
 
 Sitemap: https://hk-blood-donation.vercel.app/sitemap.xml
