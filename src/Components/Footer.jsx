@@ -44,7 +44,7 @@ function Footer() {
       </div>
       
       <div className="footer-bottom">
-        <p>&copy; 2026 Blood Donation Camp. All rights reserved. | Last updated: February  2026</p>
+        <p>&copy; 2026 Blood Donation Camp. All rights reserved. | Last updated: March  2026</p>
       </div>
     </footer>
   )
