@@ -29,7 +29,7 @@ function Home() {
           </div>
         </div>
         <div className="hero-image">
-          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&h=400&fit=crop" alt="Blood donation" />
+          <img src="https://dev.ksgcollege.com/images/facilities/blood.jpg" alt="Blood donation" />
           <div className="floating-card">
             <div className="pulse-dot"></div>
             <span>Live Donations</span>
