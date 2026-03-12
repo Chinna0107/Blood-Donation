@@ -1,7 +1,10 @@
 import { TextField, Button, MenuItem, Box, Typography, Card, CardContent, Alert, CircularProgress } from '@mui/material'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import config from '../config/config'
 
 function Donor() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     age: '',
@@ -18,7 +21,7 @@ function Donor() {
   const sendVerificationEmail = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/donors/send-verification', {
+      const response = await fetch(`${config.API_BASE_URL}/api/donors/send-verification`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: formData.email })
@@ -43,7 +46,7 @@ function Donor() {
   const verifyCode = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/donors/verify-email', {
+      const response = await fetch(`${config.API_BASE_URL}/api/donors/verify-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -76,7 +79,7 @@ function Donor() {
     } else if (verificationStep === 'verified') {
       setLoading(true);
       try {
-        const response = await fetch('http://localhost:5000/api/donors/register', {
+        const response = await fetch(`${config.API_BASE_URL}/api/donors/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
@@ -104,6 +107,32 @@ function Donor() {
 
   return (
     <main className="main-content">
+      {/* Scrolling Guidelines Banner */}
+      <Box sx={{
+        background: 'linear-gradient(90deg, rgba(220, 38, 38, 0.9) 0%, rgba(185, 28, 28, 0.9) 100%)',
+        color: 'white',
+        padding: '12px 0',
+        overflow: 'hidden',
+        position: 'relative',
+        cursor: 'pointer',
+        '&:hover': { background: 'linear-gradient(90deg, rgba(220, 38, 38, 1) 0%, rgba(185, 28, 28, 1) 100%)' }
+      }}
+      onClick={() => navigate('/donor-guidelines')}
+      >
+        <Box sx={{
+          display: 'flex',
+          animation: 'scroll 20s linear infinite',
+          '@keyframes scroll': {
+            '0%': { transform: 'translateX(100%)' },
+            '100%': { transform: 'translateX(-100%)' }
+          }
+        }}>
+          <Typography sx={{ whiteSpace: 'nowrap', fontSize: { xs: '0.9rem', sm: '1.1rem' }, fontWeight: 'bold', px: 4 }}>
+            📋 Click here to view Donor Guidelines - Important information before donating blood 📋
+          </Typography>
+        </Box>
+      </Box>
+      
       <div className="pin pin-top-left"></div>
       <div className="pin pin-top-right"></div>
       <div className="pin pin-bottom-left"></div>
@@ -113,16 +142,19 @@ function Donor() {
         background: 'rgba(255, 255, 255, 0.05)',
         backdropFilter: 'blur(15px)',
         border: '1px solid rgba(255, 255, 255, 0.1)',
-        borderRadius: '20px',
+        borderRadius: { xs: '15px', sm: '20px' },
         maxWidth: 600,
-        margin: '0 auto',
-        mt: 4
+        margin: { xs: '10px auto', sm: '0 auto' },
+        mt: { xs: 2, sm: 4 },
+        mx: { xs: 1, sm: 2, md: 'auto' },
+        width: { xs: 'calc(100% - 16px)', sm: 'calc(100% - 32px)', md: 'auto' },
+        boxSizing: 'border-box'
       }}>
-        <CardContent sx={{ p: 4 }}>
-          <Typography variant="h4" sx={{ color: 'white', mb: 1, textAlign: 'center' }}>
+        <CardContent sx={{ p: { xs: 1.5, sm: 3, md: 4 } }}>
+          <Typography variant="h4" sx={{ color: 'white', mb: 1, textAlign: 'center', fontSize: { xs: '1.5rem', sm: '2.125rem' } }}>
             Become a Life Saver
           </Typography>
-          <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.8)', mb: 3, textAlign: 'center' }}>
+          <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.8)', mb: 3, textAlign: 'center', fontSize: { xs: '0.875rem', sm: '1rem' }, px: { xs: 1, sm: 0 } }}>
             Join our community of heroes and help save lives through blood donation
           </Typography>
           
@@ -145,15 +177,17 @@ function Donor() {
             )}
             
             {verificationStep === 'verification' ? (
-              <Box sx={{ display: 'flex', gap: 2 }}>
+              <Box sx={{ display: 'flex', gap: 2, flexDirection: { xs: 'column', sm: 'row' } }}>
                 <Button 
                   onClick={verifyCode}
                   variant="contained" 
                   disabled={loading}
                   sx={{ 
                     bgcolor: '#dc2626', 
-                    py: 1.5,
-                    fontSize: '1.1rem',
+                    py: { xs: 1.2, sm: 1.5 },
+                    fontSize: { xs: '0.95rem', sm: '1.1rem' },
+                    width: { xs: '100%', sm: 'auto' },
+                    flex: { xs: 1, sm: 'initial' },
                     '&:hover': { bgcolor: '#b91c1c' }
                   }}
                 >

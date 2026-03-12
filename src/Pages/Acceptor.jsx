@@ -1,7 +1,10 @@
 import { TextField, Button, MenuItem, Box, Typography, Card, CardContent, Alert, CircularProgress } from '@mui/material'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import config from '../config/config'
 
 function Acceptor() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     patientName: '',
     bloodType: '',
@@ -21,7 +24,7 @@ function Acceptor() {
   const sendVerificationEmail = async () => {
     setLoading(true)
     try {
-      const response = await fetch('http://localhost:5000/api/requests/send-verification', {
+      const response = await fetch(`${config.API_BASE_URL}/api/requests/send-verification`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: formData.email })
@@ -46,7 +49,7 @@ function Acceptor() {
   const verifyCode = async () => {
     setLoading(true)
     try {
-      const response = await fetch('http://localhost:5000/api/requests/verify-email', {
+      const response = await fetch(`${config.API_BASE_URL}/api/requests/verify-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -79,7 +82,7 @@ function Acceptor() {
     } else if (verificationStep === 'verified') {
       setLoading(true)
       try {
-        const response = await fetch('http://localhost:5000/api/requests/submit', {
+        const response = await fetch(`${config.API_BASE_URL}/api/requests/submit`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
@@ -106,6 +109,32 @@ function Acceptor() {
 
   return (
     <main className="main-content">
+      {/* Scrolling Guidelines Banner */}
+      <Box sx={{
+        background: 'linear-gradient(90deg, rgba(34, 197, 94, 0.9) 0%, rgba(16, 185, 129, 0.9) 100%)',
+        color: 'white',
+        padding: '12px 0',
+        overflow: 'hidden',
+        position: 'relative',
+        cursor: 'pointer',
+        '&:hover': { background: 'linear-gradient(90deg, rgba(34, 197, 94, 1) 0%, rgba(16, 185, 129, 1) 100%)' }
+      }}
+      onClick={() => navigate('/acceptor-guidelines')}
+      >
+        <Box sx={{
+          display: 'flex',
+          animation: 'scroll 20s linear infinite',
+          '@keyframes scroll': {
+            '0%': { transform: 'translateX(100%)' },
+            '100%': { transform: 'translateX(-100%)' }
+          }
+        }}>
+          <Typography sx={{ whiteSpace: 'nowrap', fontSize: { xs: '0.9rem', sm: '1.1rem' }, fontWeight: 'bold', px: 4 }}>
+            📋 Click here to view Acceptor Guidelines - Important information for blood requests 📋
+          </Typography>
+        </Box>
+      </Box>
+      
       <div className="pin pin-top-left"></div>
       <div className="pin pin-top-right"></div>
       <div className="pin pin-bottom-left"></div>
@@ -118,10 +147,12 @@ function Acceptor() {
         borderRadius: '20px',
         maxWidth: 600,
         margin: '0 auto',
-        mt: 4
+        mt: 4,
+        mx: { xs: 2, sm: 'auto' },
+        width: { xs: 'calc(100% - 32px)', sm: 'auto' }
       }}>
-        <CardContent sx={{ p: 4 }}>
-          <Typography variant="h4" sx={{ color: 'white', mb: 1, textAlign: 'center' }}>
+        <CardContent sx={{ p: { xs: 2, sm: 4 } }}>
+          <Typography variant="h4" sx={{ color: 'white', mb: 1, textAlign: 'center', fontSize: { xs: '1.5rem', sm: '2.125rem' } }}>
             Request Blood
           </Typography>
           <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.8)', mb: 3, textAlign: 'center' }}>
@@ -147,7 +178,7 @@ function Acceptor() {
             )}
             
             {verificationStep === 'verification' ? (
-              <Box sx={{ display: 'flex', gap: 2 }}>
+              <Box sx={{ display: 'flex', gap: 2, flexDirection: { xs: 'column', sm: 'row' } }}>
                 <Button 
                   onClick={verifyCode}
                   variant="contained" 

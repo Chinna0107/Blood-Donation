@@ -1,10 +1,17 @@
 import { useNavigate } from 'react-router-dom'
+import SEO from '../Components/SEO'
 import './Home.css'
 
 function Home() {
   const navigate = useNavigate()
 
   return (
+    <>
+      <SEO 
+        title="Save Lives Through Blood Donation"
+        description="Blood Camp connects blood donors with those in need. Register as a donor, request blood in emergencies, and help save lives. 24/7 emergency support with 100+ partner hospitals."
+        keywords="blood donation, donate blood, blood donor registration, emergency blood request, blood bank, save lives, blood donation near me, find blood donors, blood donation camp"
+      />
     <main className="home-page">
       {/* Hero Section */}
       <section className="hero-section">
@@ -180,6 +187,7 @@ function Home() {
         </div>
       </section>
     </main>
+    </>
   )
 }
 

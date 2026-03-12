@@ -195,7 +195,7 @@ const UserProfile = () => {
                     
                     <div className="profile-field">
                       <span className="field-label">Event:</span>
-                      <span className="field-value">Blood Donation Camp</span>
+                      <span className="field-value">Hemanth Kancharla Blood Donation Camp</span>
                     </div>
                     
                     <div className="profile-field">

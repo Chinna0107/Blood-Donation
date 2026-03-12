@@ -140,23 +140,19 @@ const UserAbout = () => {
                     marginBottom: '20px',
                     fontWeight: '600'
                   }}>
-                    Dr. Sarah Johnson
+                    Mr. Hemanth Kancharla
                   </h3>
-                  <p style={{ color: '#87CEEB', fontSize: '1rem', lineHeight: '1.6', marginBottom: '15px', opacity: 0.9 }}>
-                    Dr. Sarah Johnson founded the Blood Donation Camp in 2018 with a vision to bridge the gap 
-                    between blood donors and those in critical need. With over 15 years of experience in 
-                    hematology and transfusion medicine, she witnessed firsthand the life-saving impact of 
-                    timely blood donations.
-                  </p>
-                  <p style={{ color: '#87CEEB', fontSize: '1rem', lineHeight: '1.6', marginBottom: '15px', opacity: 0.9 }}>
-                    Her dedication stems from a personal experience when her younger brother required multiple 
-                    blood transfusions during his battle with leukemia. This experience ignited her passion 
-                    for creating a more efficient and accessible blood donation system.
-                  </p>
-                  <p style={{ color: '#87CEEB', fontSize: '1rem', lineHeight: '1.6', marginBottom: '0', opacity: 0.9 }}>
+                  <p>
+              Chinna is the founder of this blood donation initiative, driven by a strong belief that no life should be lost due to the unavailability of blood. As a student with a deep sense of social responsibility, he started this platform to bridge the gap between voluntary blood donors and people in urgent need.
+
+                With a clear vision to build a fast, trustworthy, and community-driven blood donation network, Chinna actively encourages individuals—especially youth—to come forward and take part in saving lives. He believes that one unit of blood can be the reason someone gets a second chance at life.
+
+                This initiative stands on the values of compassion, humanity, and service, aiming to ensure timely help during emergencies and to spread awareness about the importance of regular blood donation.
+            </p>
+                  {/* <p style={{ color: '#87CEEB', fontSize: '1rem', lineHeight: '1.6', marginBottom: '0', opacity: 0.9 }}>
                     Under her leadership, our organization has facilitated over 10,000 successful blood 
                     donations and saved countless lives across the community.
-                  </p>
+                  </p> */}
                 </div>
               </div>
 

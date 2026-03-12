@@ -1,0 +1,68 @@
+/* Global Mobile Responsive Styles */
+.main-content {
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding: 10px;
+  }
+  
+  .pin {
+    display: none;
+  }
+  
+  /* Form responsive styles */
+  .MuiCard-root {
+    margin: 10px !important;
+    width: calc(100% - 20px) !important;
+  }
+  
+  .MuiCardContent-root {
+    padding: 16px !important;
+  }
+  
+  .MuiTextField-root {
+    margin-bottom: 12px !important;
+  }
+  
+  .MuiButton-root {
+    font-size: 0.9rem !important;
+    padding: 10px 16px !important;
+  }
+  
+  .MuiTypography-h4 {
+    font-size: 1.5rem !important;
+  }
+  
+  .MuiTypography-h6 {
+    font-size: 1rem !important;
+  }
+  
+  .MuiTypography-body1 {
+    font-size: 0.875rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .main-content {
+    padding: 5px;
+  }
+  
+  .MuiCard-root {
+    margin: 5px !important;
+    width: calc(100% - 10px) !important;
+    border-radius: 15px !important;
+  }
+  
+  .MuiCardContent-root {
+    padding: 12px !important;
+  }
+  
+  .MuiButton-root {
+    font-size: 0.85rem !important;
+    padding: 8px 12px !important;
+  }
+}
